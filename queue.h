@@ -50,6 +50,7 @@ void deQueue(struct myQueue *q);
 void displayQueue(struct myQueue *q);
 int getFront(struct myQueue *q);
 int getRear(struct myQueue *q);
+void releaseMemExit(struct myQueue *q);
 
 /*Lower layer functions*/
 bool isEmpty(struct myQueue *q);

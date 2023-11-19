@@ -45,6 +45,8 @@ void deQueue(struct myQueue *q){
     }
     struct list *temp = q->front;
     q->front = q->front->next;
+    if(q->front == NULL)        /*It is special case if there is only one node then ofcourse there will be null in front and hence the queue is empty then rear should also be null*/
+        q->rear = NULL;
     free(temp);
 }
 
@@ -75,4 +77,11 @@ int getRear(struct myQueue *q){
         return 0;
     }
     return q->rear->data;
+}
+/*It is highly recommended to release the dynamically allocated memory before closing the program*/
+void releaseMemExit(struct myQueue *q){
+    while(q->front)
+        deQueue(q);
+    free(q);
+    exit(0);
 }

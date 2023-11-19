@@ -43,7 +43,7 @@ int main(){
                 displayQueue(q);
                 break;
             case 4:
-                exit(0);
+                releaseMemExit(q);
 
         }
     }
