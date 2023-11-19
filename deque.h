@@ -1,9 +1,8 @@
 /*
-file name: queue.h
+file name: deque.h
 Author name: Malkoot Khan
-description: simple implementation of queue data structure in c
+description: simple implementation of deque data structure in c
 
-License: 
 
 Copyright (c) 2023 Malkoot Khan
 
@@ -14,45 +13,33 @@ The Software is provided "as is", without warranty of any kind, express or impli
  */
 
 
-#ifndef __QUEUE__
-#define __QUEUE__
+#ifndef __DEQUE__
+#define __DEQUE__
 
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef enum {FALSE,TRUE}bool;
+typedef enum {INSERT_R=1, INSERT_F,DEL_REAR,DEL_FRONT,GET_REAR,GET_FRONT,DISPLAY_DEQUE,REL_EXIT}operation_t;
 
-struct list{
-    int data;
-    struct list *next;
+struct deque_t{
+    int capacity;
+    int front;
+    int rear;
+    int *data;
 };
 
-struct myQueue{
-    struct list *front;
-    struct list *rear;
-};
-
-/*
- createQueue/initQueue
- enQueue
- deQueue
- displayQueue
- getFront
- getRear
-
- isEmpty
- isFull
-
- */
-struct myQueue *createQueue();
-void enQueue(struct myQueue *q, int data);
-void deQueue(struct myQueue *q);
-void displayQueue(struct myQueue *q);
-int getFront(struct myQueue *q);
-int getRear(struct myQueue *q);
-void releaseMemExit(struct myQueue *q);
+struct deque_t *createDeque(int cap);
+void insertRear(struct deque_t *dq, int data);
+void insertFront(struct deque_t *dq, int data);
+void delRear(struct deque_t *dq);
+void delFront(struct deque_t *dq);
+void displayDeque(struct deque_t *dq);
+void getFront(struct deque_t *dq);
+void getRear(struct deque_t *dq);
+void releaseMemExit(struct deque_t *dq);
 
 /*Lower layer functions*/
-bool isEmpty(struct myQueue *q);
-bool isFull(struct myQueue *q);
+bool isEmpty(struct deque_t *dq);
+bool isFull(struct deque_t *dq);
 #endif

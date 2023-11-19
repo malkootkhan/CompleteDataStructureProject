@@ -15,38 +15,61 @@ The Software is provided "as is", without warranty of any kind, express or impli
 
 
 
-#include "queue.h"
+#include "deque.h"
 
+
+int getUserData(){
+     int d;
+     printf("Enter data: ");
+     scanf("%d",&d);
+    return d;            
+}
 
 int main(){
-    int choice,d;
-    struct myQueue *q=NULL;
-    q = createQueue(); //As it is dynamic queue so no need to specify capacity
+    int choice,cap;
+    struct deque_t *q=NULL;
+    printf("Enter deque capacity: ");
+    scanf("%d",&cap);
+    q = createDeque(cap); //As it is dynamic queue so no need to specify capacity
     while (TRUE){
-        printf("press '1' for enqueue/insert data\n");
-        printf("press '2' for dequeue/delete data\n");
-        printf("press '3' for display data\n");
-        printf("press '4' for exit the program\n");
+        printf("press '1' for insert rear data\n");
+        printf("press '2' for insert front data\n");
+        printf("press '3' for delete rear data\n");
+        printf("press '4' for delete front data\n");
+        printf("press '5' for get rear data\n");
+        printf("press '6' for get front data\n");
+        printf("press '7' for display data\n");
+        printf("press '8' for release and exit the program\n");
         printf("\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch(choice){
-            case 1:
-                printf("Enter data: ");
-                scanf("%d",&d);
-                enQueue(q,d);
+            case INSERT_R:
+               insertRear(q,getUserData());
                 break;
-            case 2:
-                deQueue(q);
+            case INSERT_F:
+                insertFront(q, getUserData());
                 break;
-            case 3:
-                displayQueue(q);
+            case DEL_REAR:
+                delRear(q);
                 break;
-            case 4:
+            case DEL_FRONT:
+                delFront(q);
+                break;
+            case GET_REAR:
+                getRear(q);
+                break;
+            case GET_FRONT:
+                getFront(q);
+                break;
+            case DISPLAY_DEQUE:
+                displayDeque(q);
+                break;
+            case REL_EXIT:
                 releaseMemExit(q);
-
+                break;
+            }
         }
-    }
     return 0;
 
 }
