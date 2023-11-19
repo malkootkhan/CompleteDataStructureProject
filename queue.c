@@ -34,7 +34,7 @@ struct myQueue *createQueue(int cap){
     q->capacity = cap;
     q->front = -1;
     q->rear = -1;
-    q->data = (int *)malloc(sizeof(int));
+    q->data = (int *)malloc(cap*sizeof(int));
     return q;
 }
 void enQueue(struct myQueue *q, int data){
